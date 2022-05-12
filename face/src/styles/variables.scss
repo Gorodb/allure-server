@@ -1,0 +1,27 @@
+$regularBg: #fff;
+$errorBg: #ff5353;
+$primaryColor: #f9f9f9;
+$borderColor: #E5E5E5;
+$darkColor: #000;
+$regularText: #333333;
+$mediumText: #5f5f5f;
+$lightText: #5f5f5f;
+$failed: #EE541E;
+$broken: #b05555;
+$skipped: #DDD73F;
+$passed: #6BD976;
+$total: #C4C4C4;
+$deleteHover: #5f5f5f;
+
+$header: 60px;
+
+$buttonsWidth: 72px;
+$ownStat: calc(30% / 5);
+$description: 35%;
+$duration: calc(22% / 2);
+$stats: 13%;
+
+$button: calc(8% / 2);
+
+$buttonsWithMargin: calc(#{$buttonsWidth} + 25px);
+$blockWidth: calc(100% - calc(#{$buttonsWidth} + 15px));

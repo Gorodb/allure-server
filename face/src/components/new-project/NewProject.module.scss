@@ -1,0 +1,27 @@
+@import "src/styles/variables";
+@import "src/styles/mixins";
+
+.new-project {
+    @include project($borderColor);
+}
+
+.buttons {
+    @include buttons($buttonsWidth);
+}
+
+.edit-project-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .inputs {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+    }
+
+    .input-container {
+        margin-right: 45px;
+    }
+}

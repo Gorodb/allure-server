@@ -1,0 +1,50 @@
+@import "../../styles/variables";
+
+$passedColor: #6BD976;
+$failedColor: #EE541E;
+$brokenColor: #b05555;
+$skippedColor: #DDD73F;
+$unknownColor: #bc59ff;
+$default: #C4C4C4;
+
+.statistics {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.stat {
+  display: block;
+  height: 100%;
+}
+
+.default {
+  background: $default;
+  width: 100%;
+}
+
+.unknown {
+  background: $unknownColor;
+}
+
+.passed {
+  background: $passedColor;
+
+}
+
+.failed {
+  background: $failedColor;
+
+}
+
+.broken {
+  background: $brokenColor;
+}
+
+.skipped {
+  background: $skippedColor;
+
+}

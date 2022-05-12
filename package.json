@@ -1,0 +1,74 @@
+{
+  "name": "allure_server",
+  "version": "1.0.0",
+  "license": "ISC",
+  "description": "Allure server",
+  "keywords": [
+    "allure",
+    "allure-server",
+    "testing",
+    "automation testing"
+  ],
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "env NODE_ENV=production node server.js",
+    "client": "cd face && yarn start",
+    "client-build": "cd face && yarn build",
+    "client-install": "cd face && yarn install",
+    "allure_run": "yarn allure generate allure-results -o allure-report && yarn allure open allure-report",
+    "allure_gen": "yarn allure generate allure-results -o allure-report",
+    "docker-client-build": "cd face && env NODE_ENV=production yarn install && yarn build"
+  },
+  "author": "Ramis Vakazov <ramis.vakazov@rt.ru>",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.itv.restr.im/rvakazov/allure-server"
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-standard"
+    ],
+    "rules": {
+      "at-rule-no-unknown": [
+        true,
+        {
+          "ignoreAtRules": [
+            "/^each/"
+          ]
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "7zip-bin": "^5.0.3",
+    "allure-js-commons": "^1.3.1",
+    "archive-type": "^4.0.0",
+    "axios": "^0.18.0",
+    "body-parser": "^1.19.0",
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "detect-indent": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.0",
+    "express-rate-limit": "^5.1.3",
+    "extend": "^3.0.2",
+    "fs-extra": "^9.0.1",
+    "helmet": "^3.22.0",
+    "hpp": "^0.2.3",
+    "https": "^1.0.0",
+    "jaguar": "^6.0.1",
+    "jsesc": "^2.5.1",
+    "leaf-db": "^2.0.1",
+    "moment": "^2.20.1",
+    "morgan": "^1.10.0",
+    "node-7z": "^2.1.1",
+    "react-tabs": "^3.1.1",
+    "rotating-file-stream": "^2.1.3",
+    "xss-clean": "^0.1.1"
+  },
+  "devDependencies": {
+    "allure-commandline": "^2.13.0",
+    "prettier": "1.10.2"
+  }
+}

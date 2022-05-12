@@ -1,0 +1,12 @@
+node_modules/*
+.idea/*
+allure-results
+allure-report
+allure-reports
+.node-gyp/
+logs
+uploads
+*.log
+.DS_Store
+projects.txt
+temp

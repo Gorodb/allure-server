@@ -1,0 +1,51 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+    "jasmine": true
+  },
+  "extends": [
+    "airbnb-standard",
+    "plugin:jasmine/recommended"
+  ],
+  "plugins": [
+    "jasmine",
+    "requirejs"
+  ],
+  "rules": {
+    "object-curly-newline": "off",
+    "indent": [2, 4],
+    "global-require": "off",
+    "semi": [2, "never"],
+    "brace-style": [2, "1tbs", { "allowSingleLine": true }],
+    "no-unused-vars": [1],
+    "no-console": [0],
+    "no-undef": [0],
+    "quotes": [0],
+    "curly" : [0],
+    "prefer-destructuring": "off",
+    "no-underscore-dangle": "off",
+    "prefer-const": "off",
+    "no-trailing-spaces": "off",
+    "max-len": ["warn", { "code": 150 }],
+    "no-plusplus": "off",
+    "no-await-in-loop": "off",
+    "no-restricted-syntax": "off",
+    "no-confusing-arrow": "off",
+    "arrow-body-style": "off",
+    "array-callback-return": "off",
+    "no-multi-spaces": "off",
+    "no-continue": "off",
+    "guard-for-in": "off",
+    "quote-props": "off",
+    "no-else-return": "off",
+    "key-spacing": "off",
+    "no-param-reassign": "off",
+    "linebreak-style": "off",
+    "no-unused-labels": "off",
+    "no-labels": "off",
+    "no-nested-ternary": "off",
+    "consistent-return": "off",
+    "no-prototype-builtins": "off"
+  }
+}

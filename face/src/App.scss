@@ -1,0 +1,10 @@
+@import "src/styles/variables";
+
+* {
+  color: $regularText;
+  font-weight: 400;
+}
+
+body {
+  background-color: $primaryColor;
+}

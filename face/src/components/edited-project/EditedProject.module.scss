@@ -1,0 +1,46 @@
+@import "src/styles/variables";
+@import "src/styles/mixins";
+
+.project {
+  @include project($borderColor);
+}
+
+a {
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.input-container:not(:last-child) {
+  margin-right: 45px;
+}
+
+.edit-project-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  .project-block {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+  }
+}
+
+.description div {
+  font-size: 15px;
+  font-weight: 400;
+  color: $mediumText;
+  padding: 3px 0;
+}
+
+.buttons {
+  @include buttons($buttonsWidth)
+}
+
+.file-drop {
+  border: 1px dashed $borderColor;
+  min-width: 100px;
+  color: $lightText;
+  padding: 9px 20px;
+}

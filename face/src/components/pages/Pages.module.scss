@@ -1,0 +1,26 @@
+@import "../../styles/variables";
+
+.container {
+  max-width: 1200px;
+  min-width: 1024px;
+  margin: 45px auto;
+  padding: 10px;
+  background: $regularBg;
+  position: relative;
+}
+
+.tabs {
+  background-color: $primaryColor;
+  border: none;
+
+  &-selected {
+    background-color: $regularBg;
+    display: block;
+    border: none;
+  }
+}
+
+.tab-panel-selected {
+  background-color: $regularBg;
+  display: block;
+}

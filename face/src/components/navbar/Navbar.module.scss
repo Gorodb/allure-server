@@ -1,0 +1,68 @@
+@import "src/styles/variables";
+
+header {
+  position: sticky;
+  top: 0;
+  background-color: $regularBg;
+  width: 100vw;
+  min-width: 1024px;
+  box-shadow: 0 1px 10px rgba($darkColor, 0.2);
+  z-index: 2;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+
+  .row {
+    width: calc(100% / 3);
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .right {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.links {
+  display: flex;
+  justify-content: right;
+}
+
+.title {
+  font-size: 22px;
+  color: $mediumText;
+  font-weight: 500;
+}
+
+.header-link {
+  box-sizing: border-box;
+  padding: 1px 1px;
+  font-size: 15px;
+  font-weight: 500;
+  color: $mediumText;
+  cursor: pointer;
+  text-transform: uppercase;
+  position: relative;
+
+  &:not(:last-child) {
+    margin-right: 40px;
+  }
+
+  &:hover:after {
+    content: '';
+    position: absolute;
+    display: block;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-bottom: 1px solid rgba($mediumText, .5);
+  }
+}

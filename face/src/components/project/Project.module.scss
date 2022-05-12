@@ -1,0 +1,106 @@
+@import "src/styles/variables";
+@import "src/styles/mixins";
+
+a {
+  text-decoration: none;
+  font-size: 15px;
+
+  div {
+    font-weight: 400;
+    font-size: 15px;
+    padding: 3px 0;
+  }
+
+  .subtext {
+    font-weight: 300;
+    color: rgba($mediumText, .8);
+  }
+}
+
+.project {
+  @include project($borderColor);
+}
+
+.infoContainer {
+  width: $blockWidth;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.buttons {
+  @include buttons($buttonsWidth)
+}
+
+.description-text {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.description, .description a {
+  width: $description;
+  color: $mediumText;
+  font-size: 15px;
+}
+
+.ownStat {
+  width: $ownStat;
+  text-align: center;
+}
+
+.duration {
+  width: $duration;
+}
+
+.stats {
+  width: $stats;
+  height: 20px;
+  border-radius: 4px;
+}
+
+.failed {
+  color: $failed;
+}
+
+.broken {
+  color: $broken;
+}
+
+.skipped {
+  color: $skipped;
+}
+
+.passed {
+  color: $passed;
+}
+
+.total {
+  color: $total;
+}
+
+.empty-project {
+  @include project($borderColor);
+  display: flex;
+  justify-content: space-between;
+
+  .description {
+    color: $mediumText;
+    font-size: 15px;
+    font-weight: 400;
+
+    span {
+      display: block;
+      padding: 3px 0;
+    }
+
+    .subtext {
+      font-weight: 300;
+      color: rgba($mediumText, .8);
+    }
+  }
+
+  .description-text {
+    font-weight: 400;
+    font-size: 16px;
+  }
+}

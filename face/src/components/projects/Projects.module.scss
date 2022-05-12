@@ -1,0 +1,75 @@
+@import "src/styles/variables";
+
+.spinner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+.reports {
+  max-width: 1200px;
+  min-width: 1024px;
+  margin: 0 auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  position: sticky;
+  top: 60px;
+  background: $primaryColor;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding: 10px 15px;
+  margin: 10px 0;
+
+  thead th {
+    position: sticky;
+    top: 0;
+  }
+}
+
+.description {
+  width: $description;
+}
+
+.ownStat {
+  width: $ownStat;
+  text-align: center;
+}
+
+.duration {
+  width: $duration;
+}
+
+.stats {
+  width: $stats;
+  text-align: center;
+}
+
+.buttons {
+  width: $buttonsWithMargin
+}
+
+.hidden {
+  display: none !important;
+}
+
+.version {
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  font-weight: 300;
+  font-size: 10px;
+  color: $lightText;
+}

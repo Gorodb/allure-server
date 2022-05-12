@@ -1,0 +1,49 @@
+@import '../../../node_modules/react-tabs/style/react-tabs';
+@import "../../styles/variables";
+
+.react-tabs {
+  &__tab-list {
+    border: none;
+    background-color: $regularBg;
+    margin: 0;
+    position: sticky;
+    padding: 10px 0;
+    top: 60px;
+  }
+
+  &__tab {
+    border: none;
+    font-weight: 500;
+    font-size: 17px;
+    color: rgba($mediumText, .6);
+    background-color: $regularBg;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $primaryColor;
+      color: $mediumText;
+    }
+
+    &--selected, &--selected:hover {
+      background-color: $regularBg;
+      cursor: default;
+      color: $mediumText;
+      position: relative;
+
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-bottom: 2px solid rgba($regularText, .6);
+      }
+    }
+  }
+
+  &__tab-panel {
+    padding: 30px 20px;
+    background-color: $regularBg;
+  }
+}
