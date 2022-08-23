@@ -25,3 +25,10 @@ $button: calc(8% / 2);
 
 $buttonsWithMargin: calc(#{$buttonsWidth} + 25px);
 $blockWidth: calc(100% - calc(#{$buttonsWidth} + 15px));
+
+:root {
+  --secondary-text: #657195;
+  --gray-light: #EBEBEB;
+  --text-addition: #a6a4a0;
+  --admin-text: #6b6b6b;
+}

@@ -1,42 +1,46 @@
-# Allure-server
+# Reports hub
 
-Сервер Allure-отчетов для направления itv
+Reports hub (now only for allure reports)
 
-## Запросы
->`/api/allure/info` - список отчетов и проектов
+## Requests
+>`/api/allure/info` - list of reports
 
->`/api/allure/project` - создание проекта. \
->Тело запроса: `{"project": "stb", "description": "Тесты стб", "platform": "stb" }`
+>`/api/allure/project` - creating project. \
+>Body: `{"project": "website", "description": "Website e2e tests", "platform": "Website", type: "allure" | "html", entrypoint: "Extent.html"}`
 >
->>В `project` допускаются только латинские символы и тире. Соответствует папке, в которой будет храниться аллюр-отчет. Поэтому сперва лучше проверить, что проекта с таким названием еще не заводили.  \
->>Если такой проект уже существует, то allure-results будут разархивированы в ту же папку и отчеты смержатся после генерации.
+>>In the `project` could be only latin symbols and '-'. It must be equal to the folder there will be placed reports.  \
+>>If project with this name is already exists, allure-results will be extracted to the same folder and merged with the existing.
 >>
->>В `platform` допускаются только латинские символы и тире. Используется для фильтрации. 
+>>In the `platform` could be only latin symbols and '-'. It used for filtering and grouping.
 >>
->>В `description` задается короткое описание проекта, например `"Тесты портала"`.
+>>In the `description` you could add short description of the project, for example`"Website e2e tests"`.
+>>
+>> It `type` you should specify your reports type: "allure" | "html". And if reports are html, you should also specify its entrypoint. Note, that if html file starts with the uppercase letter, you should use the same letter in entrypoint field.
 
->`/api/allure/upload` - загрузка архива с отчетом
+>`/api/allure/upload` - uploading a report, key of the file should be the same as project name
 
->`/api/allure/remove_project` - удаление проекта и всех данных \
->Тело запроса `{ "project": "stb" }`
+>`/api/allure/remove_project` - it deleting project and all its datas \
+>Body `{ "project": "website" }`
 
-### Технологии
+### Using technologies
 
 Express https://expressjs.com/ru/api.html
 
 React https://reactjs.org/
 
-### Обновление докер-образа
+Redux-toolkit + rtk-query https://redux-toolkit.js.org/
 
-Сперва нужно удалить старый образ: 
+### Updating docker image
 
->`docker ps` (`-a`, если контейнер был остановлен) - список запущенных контейнеров
+Firstly you should delete old image:
 
->`docker images` - список образов
+>`docker ps` (`-a`, if container was stopped) - the list of running containers
 
->`docker stop <container id> && docker rm <container id> && docker rmi <image id>` - удаляем старые контейнер и образ (registry.itv.restr.im:5000/itv-site/web-base/allure-server)
+>`docker images` - list of images
 
-Запускаем новый контейнер:
+>`docker stop <container id> && docker rm <container id> && docker rmi <image id>` - removing old container and image
+
+Running new container:
 ```
 docker run -it --network=host \
 -v /Users/ramisvakazov/projects/allure-server/uploads:/apps/allure-server/uploads \
@@ -44,5 +48,5 @@ docker run -it --network=host \
 -v /Users/ramisvakazov/projects/allure-server/db:/apps/allure-server/db \
 -p 5005:5005 --privileged \
 -e NODE_ENV=production \
-registry.itv.restr.im:5000/itv-site/web-base/allure-server
+<image_name>
 ```

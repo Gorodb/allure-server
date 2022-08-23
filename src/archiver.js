@@ -1,5 +1,4 @@
-const { existsSync, mkdirSync, unlinkSync } = require('fs')
-const tar = require('tar')
+const { existsSync, unlinkSync } = require('fs')
 const _7z = require('7zip-min')
 
 const requests = require('../face/src/services/api/requests')
@@ -8,7 +7,7 @@ const archiveAllureBy7Zip = async (folder) => {
     const fileName = `${folder}.7z`
     const project = 'nc-web-admin'
 
-    await requests.createProject(project, 'Тесты доступности страниц админки')
+    await requests.createProject(project, 'Tests description')
     await _7z.pack(folder, fileName, async (err) => {
         if (err) {
             console.log(err)
@@ -18,30 +17,6 @@ const archiveAllureBy7Zip = async (folder) => {
             unlinkSync(fileName)
         }
     })
-}
-
-const archiveAllureByTar = (folder) => {
-    if (!existsSync(folder)) {
-        mkdirSync(folder, { recursive: true })
-    }
-
-    try {
-        tar.c(
-            {
-                gzip: true ,
-                file: `${folder}.tgz`
-            },
-            [folder]
-        ).then(async () => {
-            await requests.allureSend('nc-web-admin', 'allure-results.tgz', 'allure-results.tgz')
-        }).then(() => {
-            if (existsSync(`${folder}.tgz`)) {
-                unlinkSync(`${folder}.tgz`)
-            }
-        })
-    } catch (err) {
-        console.log(err)
-    }
 }
 
 (async () => {
