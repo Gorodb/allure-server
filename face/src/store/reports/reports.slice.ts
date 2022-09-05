@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {IProjectOnEdit, IReport, IReports} from "../../types/reports.types";
+import {IProjectOnEdit, IReport} from "../../types/reports.types";
 
 interface IReportsState {
   reports: IReport[],
@@ -7,15 +7,17 @@ interface IReportsState {
   filtered: IReport[],
   currentProject: IProjectOnEdit | null,
   newProject: boolean,
+  isUploading: boolean,
 }
 
-const initialState = {
+const initialState: IReportsState = {
   reports: [],
   platforms: [],
   filtered: [],
   currentProject: null,
   newProject: false,
-} as IReportsState;
+  isUploading: false,
+};
 
 export const reportsSlice = createSlice({
   name: 'reports',
@@ -59,6 +61,9 @@ export const reportsSlice = createSlice({
     },
     clearFilters: (state) => {
       state.filtered = [];
+    },
+    setIsUploading: (state, action: PayloadAction<boolean>) => {
+      state.isUploading = action.payload;
     },
   },
 })
