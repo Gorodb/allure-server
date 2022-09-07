@@ -51,6 +51,7 @@ app.use(bodyParser.json())
 app.use(fileUpload())
 
 app.use('/web/allure', express.static(path.join(__dirname, 'allure-reports')))
+app.use('/web/html', express.static(path.join(__dirname, 'allure-reports')))
 app.use('/api/allure', testApiRoute)
 
 if (process.env.NODE_ENV === 'production') {
@@ -68,7 +69,7 @@ server.listen(port, () => {
 })
 
 // Handel unhandled promise rejections
-process.on('unhandledRejection', (err, promise) => {
+process.on('unhandledRejection', (err) => {
     console.log(`Error: ${err.message}`.red)
     // Close server and exit process
     server.close(() => process.exit(1))

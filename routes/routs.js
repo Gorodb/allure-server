@@ -1,7 +1,7 @@
 const express = require('express')
 
 const {
-    deleteProject, uploadAllureReports, allureInfo, createProject
+  deleteProject, uploadAllureReports, allureInfo, createProject
 } = require('../controllers/allureController')
 
 const router = express.Router()

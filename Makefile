@@ -1,5 +1,5 @@
 DOCKER_COMPOSE_FILE := docker-compose.yml
-ALLURE_SERVER_IMAGE := registry.itv.restr.im:5000/itv-site/web-base/allure-server
+ALLURE_SERVER_IMAGE :=
 
 .PHONY: build
 build:

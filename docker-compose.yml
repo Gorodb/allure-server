@@ -1,0 +1,12 @@
+version: '3.3'
+services:
+  backend:
+    image: rvakazov/allure-server:latest
+    container_name: reports-hub
+    restart: always
+    ports:
+      - "5005:5005"
+    volumes:
+      - ./uploads:/apps/allure-server/uploads
+      - ./allure-reports:/apps/allure-server/allure-reports
+      - ./db:/apps/allure-server/db

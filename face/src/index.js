@@ -1,24 +1,20 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { BrowserRouter as Router } from 'react-router-dom'
-import { Provider } from 'react-redux'
+import {StrictMode} from "react";
+import {createRoot} from "react-dom/client";
+import {BrowserRouter as Router} from 'react-router-dom'
+import {Provider} from 'react-redux'
 
-import store from "./redux/store"
 import App from './App'
-import { ApiServiceProvider } from "./services/api-service-context"
-import apiService from "./services/api/requests"
+import {store} from './store/store'
 
-import * as serviceWorker from './serviceWorker'
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
 
-ReactDOM.render(
+root.render(
+  <StrictMode>
     <Provider store={store}>
-        <ApiServiceProvider value={apiService}>
-            <Router>
-                <App />
-            </Router>
-        </ApiServiceProvider>
-    </Provider>,
-  document.getElementById('root')
+      <Router>
+        <App/>
+      </Router>
+    </Provider>
+  </StrictMode>
 );
-
-serviceWorker.unregister()
