@@ -7,6 +7,7 @@ import {useActions} from "../../hooks/useActions";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {ModalTypes} from "../../store/modal/modal.slice";
 import {ReportsTypesEnum} from "../../enums/reportsTypes.enum";
+import {strings} from "../../localization/strings";
 
 const Project = ({report}: ProjectProps) => {
   const {setProjectOnEdit, openModal} = useActions()
@@ -30,8 +31,8 @@ const Project = ({report}: ProjectProps) => {
     openModal({
       type: ModalTypes.delete,
       project,
-      title: 'Deletion confirmation',
-      text: `Deleting a project: ${description.toString().toLowerCase()} (${project})`
+      title: strings.modal.title,
+      text: `${strings.modal.text}: ${description.toString().toLowerCase()} (${project})`
     })
   }
 
@@ -60,8 +61,8 @@ const Project = ({report}: ProjectProps) => {
     <div className={classes['empty-project']}>
       <div onClick={onEditClick} className={classes.description}>
         <span className={classes['description-text']}>{description}</span>
-        <span className={classes.subtext}>Project: {project}</span>
-        <span className={classes.subtext}>Platform: {platform} ({type}{type === ReportsTypesEnum.html && `, ${entrypoint}`})</span>
+        <span className={classes.subtext}>{strings.project.project}: {project}</span>
+        <span className={classes.subtext}>{strings.project.platform}: {platform} ({type}{type === ReportsTypesEnum.html && `, ${entrypoint}`})</span>
       </div>
       <div className={classes.buttons}>
         <EditButton onClick={onEditClick}/>
@@ -76,9 +77,9 @@ const Project = ({report}: ProjectProps) => {
         <span className={classes.description}>
           <a href={hrefLink} target="_blank" rel="noopener noreferrer">
             <div className={classes['description-text']}>{description}</div>
-            <div className={classes.subtext}>Project: {project}</div>
+            <div className={classes.subtext}>{strings.project.project}: {project}</div>
             <div className={classes.subtext}>
-              Platform: {platform} ({type}{type === ReportsTypesEnum.html && `, ${entrypoint}`})
+              {strings.project.platform}: {platform} ({type}{type === ReportsTypesEnum.html && `, ${entrypoint}`})
             </div>
           </a>
         </span>

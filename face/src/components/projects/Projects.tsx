@@ -9,6 +9,7 @@ import {useGetProjectsQuery} from "../../store/reports/reports.api";
 import {useActions} from "../../hooks/useActions";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {useEffect} from "react";
+import {strings} from "../../localization/strings";
 
 const Projects = () => {
   const {data, isLoading, error} = useGetProjectsQuery("")
@@ -28,7 +29,7 @@ const Projects = () => {
   }
 
   if (error) {
-    return <div>Something went wrong...</div>
+    return <div>{strings.projectsHeader.errorMessage}</div>
   }
 
   const reportsToRender = !!filtered.length ? filtered : reports
@@ -44,19 +45,19 @@ const Projects = () => {
         filterItems={platforms}
         filterFunction={filterReports}
         clearFilter={clearFilters}
-        defaultText='Chose platform'
+        defaultText={strings.mainPage.filterTitle}
       />
       <div className={classes.container}>
         <div className={classes.header}>
-          <span className={classes.description}>Project</span>
-          <span className={classes.duration}>Test time</span>
-          <span className={classes.duration}>Lust run</span>
-          <span className={classes.ownStat}>passed</span>
-          <span className={classes.ownStat}>failed</span>
-          <span className={classes.ownStat}>broken</span>
-          <span className={classes.ownStat}>skipped</span>
-          <span className={classes.ownStat}>total</span>
-          <span className={classes.stats}>Statistics</span>
+          <span className={classes.description}>{strings.projectsHeader.description}</span>
+          <span className={classes.duration}>{strings.projectsHeader.time}</span>
+          <span className={classes.duration}>{strings.projectsHeader.lastRun}</span>
+          <span className={classes.ownStat}>{strings.projectsHeader.passed}</span>
+          <span className={classes.ownStat}>{strings.projectsHeader.failed}</span>
+          <span className={classes.ownStat}>{strings.projectsHeader.broken}</span>
+          <span className={classes.ownStat}>{strings.projectsHeader.skipped}</span>
+          <span className={classes.ownStat}>{strings.projectsHeader.total}</span>
+          <span className={classes.stats}>{strings.projectsHeader.statistics}</span>
           <span className={classes.buttons}/>
         </div>
         {newProject ? <NewProject/> : null}

@@ -10,6 +10,7 @@ import {AlertsTypesEnum} from "../../store/alerts/alerts.slice";
 import {useAlerts} from "../../hooks/useAlerts";
 import {ReportsTypesEnum} from "../../enums/reportsTypes.enum";
 import {Select} from "../select";
+import {strings} from "../../localization/strings";
 
 const emptyProject: IProjectInfo = {
   description: '',
@@ -34,7 +35,7 @@ const NewProject = () => {
     }
     if (isError) {
       setAlert({
-        text: `Could not create new project: ${error}`,
+        text: `${strings.messages.createNewProjectError}: ${error}`,
         type: AlertsTypesEnum.error
       })
     }
@@ -82,7 +83,7 @@ const NewProject = () => {
             name="description"
             value={projectInfo.description}
             onChange={onChange}
-            label='Description'
+            label={strings.project.description}
             inputRef={myInput}
             autoComplete="off"
             required/>
@@ -93,7 +94,7 @@ const NewProject = () => {
             name="project"
             value={projectInfo.project}
             onChange={onChange}
-            label='Project'
+            label={strings.project.project}
             autoComplete="off"
             required />
         </div>
@@ -103,7 +104,7 @@ const NewProject = () => {
             name="platform"
             value={projectInfo.platform}
             onChange={onChange}
-            label='Platform'
+            label={strings.project.platform}
             autoComplete="off"
             required />
         </div>
@@ -113,11 +114,11 @@ const NewProject = () => {
             name="entrypoint"
             value={projectInfo.entrypoint}
             onChange={onChange}
-            label='Entrypoint'
+            label={strings.project.entrypoint}
             autoComplete="off"/>
         </div>}
         <div className={classes['input-container']}>
-          <Select defaultOptionText={reportType} isRequired value={reportType} onChange={onChangeSelect} label={'Report type'}>
+          <Select defaultOptionText={reportType} isRequired value={reportType} onChange={onChangeSelect} label={strings.project.reportType}>
             <option value={ReportsTypesEnum.allure}>{ReportsTypesEnum.allure}</option>
             <option value={ReportsTypesEnum.html}>{ReportsTypesEnum.html}</option>
           </Select>

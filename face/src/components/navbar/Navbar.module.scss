@@ -28,11 +28,22 @@ header {
   .right {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+  }
+
+  .textContainer {
+    height: 15px;
   }
 }
 
 .links {
   display: flex;
+}
+
+.rightMenu {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .title {
@@ -45,6 +56,7 @@ header {
   box-sizing: border-box;
   padding: 1px 1px;
   font-size: 15px;
+  line-height: 15px;
   font-weight: 500;
   color: $mediumText;
   cursor: pointer;

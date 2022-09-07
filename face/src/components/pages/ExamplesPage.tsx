@@ -1,10 +1,8 @@
-import React from "react"
-// @ts-ignore
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs'
 
 import './react-tabs.scss'
 import classes from './Pages.module.scss'
-import {JsExample, PythonExample} from "../examples"
+import {strings} from "../../localization/strings";
 
 const ExamplesPage = () => {
   return (
@@ -16,10 +14,10 @@ const ExamplesPage = () => {
         </TabList>
 
         <TabPanel>
-          <JsExample/>
+          {strings.examples.jsExample()}
         </TabPanel>
         <TabPanel>
-          <PythonExample/>
+          {strings.examples.pythonExample()}
         </TabPanel>
       </Tabs>
     </div>

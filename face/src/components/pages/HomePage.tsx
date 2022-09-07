@@ -3,7 +3,7 @@ import React from "react"
 import Projects from "../projects"
 
 const HomePage = () => {
-  return <Projects/>
+  return <Projects />
 }
 
 export default HomePage

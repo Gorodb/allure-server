@@ -1,18 +1,11 @@
-import React from "react"
-
-// @ts-ignore
-import Markdown from '@loopmode/markdown'
-
-import classes from './Examples.module.scss'
-
-const installRequirements = `\`\`\`javascript
+export const installRequirements = `\`\`\`javascript
 yarn add 7zip-min
 yarn add axios
 yarn add form-data
 yarn add npm-run-all
 \`\`\``
 
-const testPhase = `\`\`\`javascript
+export const testPhase = `\`\`\`javascript
 "scripts": {
     "pretest": "rm -rf allure-results && rm -rf allure-report && webdriver-manager update",
     "run-test": "jest",
@@ -23,7 +16,7 @@ const testPhase = `\`\`\`javascript
 }
 \`\`\``
 
-const axiosInstance = `\`\`\`javascript
+export const axiosInstance = `\`\`\`javascript
 const Axios = require('axios')
 const https = require('https')
 
@@ -39,7 +32,7 @@ const axios = Axios.create({
 module.exports = axios
 \`\`\``
 
-const axiosMethods = `\`\`\`javascript
+export const axiosMethods = `\`\`\`javascript
 const axios = require('./axiosInstance')
 const FormData = require('form-data')
 const { readFileSync } = require('fs')
@@ -75,7 +68,7 @@ static async sendAllureResults (name, filePath, fileName) {
 }
 \`\`\``
 
-const sendMethods = `\`\`\`javascript
+export const sendMethods = `\`\`\`javascript
 const { existsSync, mkdirSync, unlinkSync } = require('fs')
 const _7z = require('7zip-min')
 
@@ -101,35 +94,3 @@ const archiveAllureBy7Zip = async (folder) => {
     await archiveAllureBy7Zip("./allure-results")
 })()
 \`\`\``
-
-const JsExample = () => {
-  return (
-    <>
-      <div className={classes['code-description']}>Adding dependencies</div>
-      <Markdown>
-        {installRequirements}
-      </Markdown>
-      <div className={classes['code-description']}>Adding <span>archiver.js</span> file into the root dir. It will
-        run after <span>test</span> phase
-      </div>
-      <Markdown>
-        {sendMethods}
-      </Markdown>
-      <div className={classes['code-description']}>Adding axios instance: file <span>axiosInstance.js</span> into the
-        folder <span>api</span></div>
-      <Markdown>
-        {axiosInstance}
-      </Markdown>
-      <div className={classes['code-description']}>Adding method to send report on server,
-        file <span>requests.js</span></div>
-      <Markdown>
-        {axiosMethods}
-      </Markdown>
-      <div className={classes['code-description']}>Modifying <span>package.json</span> for sending reports</div>
-      <Markdown>
-        {testPhase}
-      </Markdown>
-    </>
-  )
-}
-export default JsExample

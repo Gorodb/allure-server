@@ -8,6 +8,7 @@ import {useActions} from "../../hooks/useActions";
 import {useRemoveProjectMutation} from "../../store/reports/reports.api";
 import {AlertsTypesEnum} from "../../store/alerts/alerts.slice";
 import {useAlerts} from "../../hooks/useAlerts";
+import {strings} from "../../localization/strings";
 
 const DeleteModal = () => {
   const {title, text, project} = useTypedSelector(state => state.modal.modal!)
@@ -28,14 +29,14 @@ const DeleteModal = () => {
       closeModal()
       setAlert({
         type: AlertsTypesEnum.success,
-        text: `Project ${project} was successfully deleted`
+        text: strings.formatString(strings.messages.deleteProjectSuccess, {project}).toString()
       })
     }
     if (isError) {
       closeModal()
       setAlert({
         type: AlertsTypesEnum.error,
-        text: `Could not delete project ${project}, \r\n ${error}`
+        text: `${strings.messages.deleteProjectError} ${project}, \r\n ${error}`
       })
     }
   }, [isSuccess, isError])
@@ -48,7 +49,7 @@ const DeleteModal = () => {
         buttonRef={deleteButton}
         buttonType={ButtonTypesEnum.DARK}
         onClick={() => removeProject({project})}
-      >Delete</Button>
+      >{strings.buttons.delete}</Button>
     </div>
   )
 }

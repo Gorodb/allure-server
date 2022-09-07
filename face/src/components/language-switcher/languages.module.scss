@@ -1,0 +1,42 @@
+.langBlock {
+  position: relative;
+  margin-left: 10px;
+}
+
+.langContainer {
+  padding: 0 10px;
+  border: 1px solid rgba(var(--primary-text), 0.2);
+  cursor: pointer;
+}
+
+.langTitle {
+  font-weight: 400;
+}
+
+.visible {
+  display: block;
+}
+
+.invisible {
+  display: none;
+}
+
+.langDropdown {
+  z-index: 5;
+  position: absolute;
+  padding: 5px 0;
+  right: 0;
+  margin: 5px 0 0 0;
+  border: 1px solid rgba(var(--primary-text), 0.2);
+  background-color: var(--bg-color);
+}
+
+.langItem {
+  cursor: pointer;
+  margin: 0;
+  padding: 3px 10px;
+
+  &:hover {
+    background-color: var(--gray-light);
+  }
+}

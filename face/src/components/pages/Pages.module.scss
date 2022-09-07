@@ -9,6 +9,13 @@
   position: relative;
 }
 
+.notFoundContainer {
+  max-width: 1200px;
+  min-width: 1024px;
+  margin: 45px auto;
+  position: relative;
+}
+
 .tabs {
   background-color: $primaryColor;
   border: none;

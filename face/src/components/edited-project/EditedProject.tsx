@@ -10,6 +10,7 @@ import {IProjectInfo} from "../../types/project.types";
 import {useCreateProjectMutation, useLazyGetProjectsQuery} from "../../store/reports/reports.api";
 import {useActions} from "../../hooks/useActions";
 import {ReportsTypesEnum} from "../../enums/reportsTypes.enum";
+import {strings} from "../../localization/strings";
 
 const initialProject: IProjectInfo = {
   description: '',
@@ -66,7 +67,7 @@ const EditedProject = ({report}: EditProjectProps) => {
               onChange={onChange}
               inputRef={descriptionInput}
               autoComplete="off"
-              label='Description'
+              label={strings.project.description}
               required />
           </div>
           <div className={classes['input-container']}>
@@ -76,7 +77,7 @@ const EditedProject = ({report}: EditProjectProps) => {
               value={projectInfo.platform}
               onChange={onChange}
               autoComplete="off"
-              label='Platform'
+              label={strings.project.platform}
               required />
           </div>
           {type === ReportsTypesEnum.html && <div className={classes['input-container']}>
@@ -86,12 +87,12 @@ const EditedProject = ({report}: EditProjectProps) => {
               value={projectInfo.entrypoint}
               onChange={onChange}
               autoComplete="off"
-              label='Entrypoint'
+              label={strings.project.entrypoint}
               required/>
           </div>}
           <span className={classes.description}>
-            <div>Project: {project}</div>
-            <div>Type: {type}</div>
+            <div>{strings.project.project}: {project}</div>
+            <div>{strings.project.reportType}: {type}</div>
           </span>
         </div>
         <FileDrop project={project} projectType={type}/>

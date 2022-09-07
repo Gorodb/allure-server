@@ -1,7 +1,11 @@
-import JsExample from "./JsExample"
-import PythonExample from "./PythonExample"
+import RuJsExample from "./RuJsExample"
+import RuPythonExample from "./RuPythonExample"
+import EnJsExample from "./EnJsExample";
+import EnPythonExample from "./EnPythonExample";
 
 export {
-    JsExample,
-    PythonExample
+  RuJsExample,
+  RuPythonExample,
+  EnPythonExample,
+  EnJsExample,
 }
