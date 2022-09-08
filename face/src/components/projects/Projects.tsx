@@ -1,3 +1,4 @@
+import {useEffect, useState} from "react";
 import version from "../../utils/version"
 import classes from './Projects.module.scss'
 import Project from "../project"
@@ -5,17 +6,27 @@ import Spinner from "../spinner"
 import NewProject from "../new-project"
 import CustomFilter from "../custom-filter"
 import {IReport} from "../../types/reports.types";
-import {useGetProjectsQuery} from "../../store/reports/reports.api";
+import {useGetProjectsQuery, useLazyGetProjectsQuery} from "../../store/reports/reports.api";
 import {useActions} from "../../hooks/useActions";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
-import {useEffect} from "react";
 import {strings} from "../../localization/strings";
 
 const Projects = () => {
+  const [eventListener, setEventListener] = useState<EventSource | null>(null);
   const {data, isLoading, error} = useGetProjectsQuery("")
+  const [getProjects] = useLazyGetProjectsQuery()
   const {filterReports, clearFilters, setReportsToState, setPlatforms} = useActions();
   const {filtered, newProject, platforms} = useTypedSelector(store => store.reports)
   const { reports } = useTypedSelector(state => state.reports)
+
+  useEffect(() => {
+    let eventSource = new EventSource(`${process.env.REACT_APP_API_URL}/api/allure/stream`)
+    setEventListener(eventSource)
+    return () => {
+      eventSource.close()
+      setEventListener(null)
+    }
+  }, [])
 
   useEffect(() => {
     if (data && !isLoading) {
@@ -23,6 +34,12 @@ const Projects = () => {
       setPlatforms(data.reports)
     }
   }, [data])
+
+  if (eventListener) {
+    eventListener.addEventListener("upload",  (event) => {
+      getProjects("")
+    })
+  }
 
   if (isLoading) {
     return <div className={classes.spinner}><Spinner/></div>

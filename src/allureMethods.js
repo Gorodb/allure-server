@@ -5,6 +5,7 @@ const LeafDB = require('leaf-db')
 const Seven = require('node-7z')
 const sevenBin = require('7zip-bin')
 const jaguar = require('jaguar')
+const {sse} = require("../routes/routs");
 
 const env = process.env
 let db = new LeafDB({name: process.env.DB, root: `${process.cwd()}/db`})
@@ -23,7 +24,9 @@ class AllureMethods {
       await exec(
         `allure generate ${source} --clean -o ${env.ALLURE_REPORTS_PATH}${destination}`,
         {maxBuffer: 25 * 1024 * 1024}
-      )
+      ).on("exit", () => {
+        try {sse.send("allure report generated", "upload", "upload")} catch {}
+      })
     } catch (err) {
       console.log(err)
     }
@@ -68,6 +71,7 @@ class AllureMethods {
     unpackStream.on('end', () => {
       removeSync(filePath)
       removeSync(uploadPath)
+      try {sse.send("html report uploaded", "upload", "upload")} catch {}
     })
   }
 
@@ -107,6 +111,7 @@ class AllureMethods {
     extract.on('end', async () => {
       removeSync(filePath)
       removeSync(uploadPath)
+      try {sse.send("html report uploaded", "upload", "upload")} catch {}
     });
   }
 

@@ -4,7 +4,7 @@ const archiveType = require('archive-type')
 const ErrorResponse = require('../middleware/errorResponse')
 const asyncHandler = require('../middleware/asyncHandler')
 const AllureMethods = require('../src/allureMethods')
-const {reportTypes} = require("../types/reportTypes");
+const {reportTypes} = require("../types/reportTypes")
 
 const env = process.env
 
@@ -155,6 +155,7 @@ exports.allureInfo = asyncHandler(async (req, res) => {
 
   reportsInfo.reports = [...projectsToPush, ...reportsInfo.reports]
     .sort((a, b) => a.lastUpdate - b.lastUpdate).reverse()
+
   res.status(200).send(reportsInfo)
 })
 

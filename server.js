@@ -39,6 +39,11 @@ app.use(hpp())
 // Enable Cors
 app.use(cors())
 
+app.use((req, res, next) => {
+    res.flush = function () { /* Do nothing */ }
+    next();
+})
+
 const accessLogStream = rfs.createStream('access.log', {
     interval: '1d',
     path: path.join(__dirname, 'logs')
